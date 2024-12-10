@@ -6,16 +6,7 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class Result {
-
-    /*
-     * Complete the 'kFactorization' function below.
-     *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts following parameters:
-     *  1. INTEGER n
-     *  2. INTEGER_ARRAY A
-     */
+class Solution {
 
     static List<Integer> bestPath = null;
 
@@ -29,7 +20,7 @@ class Result {
         currentPath.add(1); // Start with 1
         findPath(1, n, A, currentPath);
 
-        // Print the result
+        // return the result
         if (bestPath == null) {
             return List.of(-1);
         } else {
@@ -39,6 +30,7 @@ class Result {
         }
     }
 
+    // Recursive function
     public static void findPath(int current, int target, List<Integer> A, List<Integer> currentPath) {
         // Base case: if we reached the target
         if (current == target) {
@@ -75,6 +67,7 @@ class Result {
 }
 
 public class KFactorization {
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
@@ -89,7 +82,7 @@ public class KFactorization {
                 .map(Integer::parseInt)
                 .collect(toList());
 
-        List<Integer> result = Result.kFactorization(n, A);
+        List<Integer> result = Solution.kFactorization(n, A);
 
         bufferedWriter.write(
                 result.stream()
